@@ -1,0 +1,14 @@
+{
+  "main": "src/index.js",
+  "author": "Dream Kangcoding <Kang@dream-coding.com>",
+  "license": "MIT",
+  "devDependencies": {
+      "jest": "버전 정보"
+  },
+  "scripts": {
+      "test": "jest"
+  },
+  "jest": {
+      "testEnvironment": "jest-environment-node"
+  }
+}
