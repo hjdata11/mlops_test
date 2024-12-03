@@ -1,25 +1,30 @@
-
-import pytest
-from fastapi.testclient import TestClient
-
+# 경로를 잡아줘야대지만 연습용이라 무시함.
 import sys
 from os import path
 sys.path.append(path.dirname(path.dirname( path.abspath(__file__))))
-from src.main import app
 
+import unittest
+from fastapi.testclient import TestClient
+from app.main import app
 
-def client():
-    return TestClient(app)
+class TestApp(unittest.TestCase):
+    def setUp(self):
+        self.client = TestClient(app)
 
-@app.get("/")
-def hello_world():
-    return "FastAPI World!!"
+    def test_read_root(self):
+        response = self.client.get("/")
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json(), {"message": "Hello, World!"})
 
-def test_hello_world(client):
-    response = client.get("/")
-    assert response.status_code == 200
-    assert response.stauts_code != 500
-    assert response.json() == "FastAPI World!!"
-    
-def test_example():
-    return
+    def test_read_item(self):
+        response = self.client.get("/items/1")
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json(), {"item_id": 1, "q": None})
+
+    def test_read_item_with_query_param(self):
+        response = self.client.get("/items/1?q=test")
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json(), {"item_id": 1, "q": "test"})
+
+if __name__ == "__main__":
+    unittest.main()

@@ -1,3 +1,2 @@
-uvicorn
-fastapi[all]
-httpx
+fastapi==0.70.0
+uvicorn==0.15.0
