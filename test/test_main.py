@@ -3,6 +3,12 @@ import pytest
 from fastapi.testclient import TestClient
 from src.main import app
 
+import sys
+from pathlib import Path
+
+root_dir = Path(__file__).parent.parent
+sys.path.append(str(root_dir))
+
 def client():
     return TestClient(app)
 
