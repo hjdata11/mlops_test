@@ -3,7 +3,7 @@
   "author": "Dream Kangcoding <Kang@dream-coding.com>",
   "license": "MIT",
   "devDependencies": {
-      "jest": "버전 정보"
+      "jest": "14.x"
   },
   "scripts": {
       "test": "jest"
