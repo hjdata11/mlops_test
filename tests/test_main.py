@@ -1,12 +1,12 @@
 
 import pytest
 from fastapi.testclient import TestClient
-from src.main import app
+# from src.main import app
 
-def client():
-    return TestClient(app)
+# def client():
+#     return TestClient(app)
 
-@app.get("/")
+# @app.get("/")
 def hello_world():
     return "FastAPI World!!"
 
