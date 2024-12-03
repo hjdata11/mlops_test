@@ -1,13 +1,7 @@
 
 import pytest
 from fastapi.testclient import TestClient
-
-import sys
-import os
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../src')))
-
-from main import app
-
+from src.main import app
 
 def client():
     return TestClient(app)
@@ -22,4 +16,5 @@ def test_hello_world(client):
     assert response.stauts_code != 500
     assert response.json() == "FastAPI World!!"
     
-    
+def test_example():
+    return
